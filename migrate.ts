@@ -1,12 +1,10 @@
-import { pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
-import { drizzle } from 'drizzle-orm/node-postgres';
-import { Client } from 'pg';
+import { migrate } from 'drizzle-orm/node-postgres/migrator';
 
-import { handler } from './netlify/functions/api';
-import { DB } from './netlify/functions/db';
+import { useDatabase } from './netlify/functions/db/db';
 
-const client = new Client(process.env.DATABASE_CONNECTION_STRING);
-// await client.connect();
-const db = drizzle(client);
+const runMigrations = async () => {
+  const db = await useDatabase();
+  await migrate(db, { migrationsFolder: './drizzle/migrations' });
+}
 
-console.log('MIGRATE', db, handler, DB);
+runMigrations();
