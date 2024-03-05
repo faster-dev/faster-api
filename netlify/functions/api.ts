@@ -1,5 +1,9 @@
 import express, { Router } from 'express';
 import serverless from 'serverless-http';
+// import pg from 'pg';
+
+// var db = new pg.Client(DATABASE_CONNECTION_STRING);
+// db.connect();
 
 const api = express();
 

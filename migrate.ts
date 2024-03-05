@@ -1,0 +1,1 @@
+console.log('MIGRATE', process.env.DATABASE_CONNECTION_STRING);
