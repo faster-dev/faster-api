@@ -6,7 +6,7 @@ import { handler } from './netlify/functions/api';
 import { DB } from './netlify/functions/db';
 
 const client = new Client(process.env.DATABASE_CONNECTION_STRING);
-await client.connect();
+// await client.connect();
 const db = drizzle(client);
 
 console.log('MIGRATE', db, handler, DB);
